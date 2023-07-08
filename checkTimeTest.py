@@ -18,7 +18,7 @@ totalDays=totalDays-1.5 #Cause January 1st 2000
 print(totalDays)
 
 
-#LST
+#LST (Local sidereal time (LST) is the time based on the apparent position of the stars at a particular location on Earth)
 def findLST(longitude):
 	utcDecimal = (timers.tm_min/60)+(timers.tm_hour)
 	print(utcDecimal)

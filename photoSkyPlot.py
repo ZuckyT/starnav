@@ -14,8 +14,9 @@ divisor = float(4)
 timer = float(time.time())
 timers = time.gmtime(timer)
 print("Timers GmTime: ", timers)
+#inputTime = input("Please input photo time in form 'm/d/y hh:mm')
 timers= time.strptime("4/1/2022 02:35", "%d/%m/%Y %H:%M")
-print("Timers: ", timers)
+print("Timers: ", timers.strftime('%d/%m/%Y %H:%M'))
 years = timers.tm_year - 2000
 iyears = int(years)
 totalDays=years*365 #Years
