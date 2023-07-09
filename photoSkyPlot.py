@@ -9,14 +9,17 @@ from astroplan import FixedTarget
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import transforms
+
+
 #Days Since J2000
 divisor = float(4)
 timer = float(time.time())
 timers = time.gmtime(timer)
 print("Timers GmTime: ", timers)
-#inputTime = input("Please input photo time in form 'm/d/y hh:mm')
+#inputTime = input("Please input photo time in form 'm/d/y hh:mm' in Greenwich Mean Time (EST+5))
+#timers = time.strptime(inputTime, "%d/%m/%Y %H:%M")
 timers= time.strptime("4/1/2022 02:35", "%d/%m/%Y %H:%M")
-print("Timers: ", timers.strftime('%d/%m/%Y %H:%M'))
+#print("Timers: ", timers.strftime('%d/%m/%Y %H:%M'))
 years = timers.tm_year - 2000
 iyears = int(years)
 totalDays=years*365 #Years
@@ -83,6 +86,8 @@ def altAz(name):
 	#Switch All to Degrees for Trig Calculation
 	altitudeS = (sin(star.dec.degree)*sin(latitude))+(cos(star.dec.degree)*cos(latitude)*cos(hourAngle))
 	altitudeS = round(altitudeS, 4)
+	#Why? Just Comparing to 0?
+	print("Maybe this is 0: ", (round(math.sin(math.radians(altitude)), 4)))
 	while(round(math.sin(math.radians(altitude)), 4)!=altitudeS):
 		altitude=altitude+.0001
 		if(altitude>=90):
